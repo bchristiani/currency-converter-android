@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">CurrencyConverter</string>
+    <string name="title_activity_converter">Währungsumrechner</string>
+
+    <string name="label_start_curreny">Startwährung</string>
+    <string name="label_target_curreny">Zielwährung</string>
+    <string name="spinner_start_currency_prompt">Welche Startwährung?</string>
+    <string-array name="start_currency">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>GRD</item>
+    </string-array>
+    <string name="spinner_target_currency_prompt">Welche Zielwährung?</string>
+    <string-array name="target_currency">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>GRD</item>
+    </string-array>
+
+    <string name="action_settings">Settings</string>
 </resources>
