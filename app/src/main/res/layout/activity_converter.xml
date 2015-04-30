@@ -30,13 +30,11 @@
         <Spinner
             android:id="@+id/spinner_start_currency"
             style="@style/ConverterStyle"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/spinner_start_currency_prompt"/>
+            android:spinnerMode="dropdown"/>
         <Spinner
             android:id="@+id/spinner_target_currency"
             style="@style/ConverterStyle"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/spinner_target_currency_prompt"/>
+            android:spinnerMode="dropdown"/>
     </LinearLayout>
     <EditText
         android:layout_width="match_parent"

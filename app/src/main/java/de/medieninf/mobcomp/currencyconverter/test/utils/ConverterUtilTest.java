@@ -1,11 +1,11 @@
-package de.medieninf.mobcomp.currencyconverter.test;
+package de.medieninf.mobcomp.currencyconverter.test.utils;
 
 import android.test.InstrumentationTestCase;
 
 /**
  * Created by bchristiani on 30.04.2015.
  */
-public class FooTest extends InstrumentationTestCase{
+public class ConverterUtilTest extends InstrumentationTestCase{
 
     public void test() throws Exception{
         final int expected = 5;
