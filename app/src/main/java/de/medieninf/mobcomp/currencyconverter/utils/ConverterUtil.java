@@ -38,8 +38,8 @@ public final class ConverterUtil {
         return convertOtherCurrency(amountBd,startRateBd,targetRateBd);
     }
 
-    public static String getFormattedAmount(final float amount, final String currency) {
-        return amount + " " + currency;
+    public static String getFormattedAmount(final String amount, final String currency) {
+        return amount.replace(".", ",") + " " + currency;
     }
 
     private ConverterUtil() {
