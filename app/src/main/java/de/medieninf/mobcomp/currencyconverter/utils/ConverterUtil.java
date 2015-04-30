@@ -14,7 +14,7 @@ public final class ConverterUtil {
         BigDecimal rateBd = BigDecimal.valueOf(rate);
         BigDecimal resultBd = BigDecimal.ZERO;
         if(type == Type.EURO_TO_OTHER) {
-            resultBd = amountBd.multiply(rateBd);
+            resultBd = amountBd.multiply(rateBd).setScale(2,BigDecimal.ROUND_HALF_UP);
         } else if(type == Type.OTHER_TO_EURO) {
             resultBd = amountBd.divide(rateBd, 2, BigDecimal.ROUND_HALF_UP);
         }
