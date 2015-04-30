@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 
-public class Converter extends Activity {
+public class ConverterActivity extends Activity {
 
     private Spinner spinnerStartCurrency;
     private Spinner spinnerTargetCurrency;
