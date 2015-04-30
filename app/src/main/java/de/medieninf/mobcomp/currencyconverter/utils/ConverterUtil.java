@@ -42,6 +42,10 @@ public final class ConverterUtil {
         return amount.replace(".", ",") + " " + currency;
     }
 
+    public static boolean isNumeric(final String s) {
+        return s.matches("[-+]?\\d*\\.?\\d+");
+    }
+
     private ConverterUtil() {
         throw new IllegalAccessError("Private constructor should never be used.");
     }

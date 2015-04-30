@@ -93,9 +93,9 @@ public class ConverterActivity extends Activity {
         String etAmountText = etAmount.getText().toString();
         String result = "";
         //TODO: Check if input text is a number within Util class.
-        if(etAmountText.length() > 0) {
+        if(etAmountText.length() > 0 && ConverterUtil.isNumeric(etAmountText)) {
             if (selectedStartCurrency.compareTo(selectedTargetCurrency) == 0) {
-                result = etAmountText;
+                result = ConverterUtil.convertOtherCurrency(etAmountText, 1, 1);
             } else if (selectedStartCurrency.compareTo("EUR")==0 && selectedTargetCurrency.compareTo("EUR") != 0) {
                 result = ConverterUtil.convertEuroCurrency(etAmountText, ConverterUtil.Type.EURO_TO_OTHER, getRate(selectedTargetCurrency));
             } else if(selectedStartCurrency.compareTo("EUR")!=0 && selectedTargetCurrency.compareTo("EUR") != 0) {
