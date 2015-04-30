@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,18 +26,22 @@ public class ConverterActivity extends Activity {
     private Spinner spinnerStartCurrency;
     private Spinner spinnerTargetCurrency;
     private Button btnCalculate;
+    private ImageButton ibtnSwitchCurrency;
     private TextView tvResult;
     private EditText etAmount;
     private Toast toast;
     private String selectedStartCurrency;
     private String selectedTargetCurrency;
 
-    private View.OnClickListener onCalculateListener = new View.OnClickListener() {
+    private View.OnClickListener onSwitchCurrencyListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            onClickCalculate();
+            onClickSwitchCurrency();
+            //onClickCalculate();
         }
     };
+
+
 
     // TODO: eigene Klasse
     private AdapterView.OnItemSelectedListener avoisl = new AdapterView.OnItemSelectedListener() {
@@ -68,6 +73,7 @@ public class ConverterActivity extends Activity {
         spinnerStartCurrency = (Spinner) findViewById(R.id.spinner_start_currency);
         spinnerTargetCurrency = (Spinner) findViewById(R.id.spinner_target_currency);
         btnCalculate = (Button) findViewById(R.id.btn_calculate);
+        ibtnSwitchCurrency = (ImageButton) findViewById(R.id.ibtn_switch);
         tvResult = (TextView) findViewById(R.id.tv_result);
         etAmount = (EditText) findViewById(R.id.et_amount);
         etAmount.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);
@@ -83,9 +89,14 @@ public class ConverterActivity extends Activity {
         spinnerTargetCurrency.setAdapter(adapterTargetCurrency);
 
         // set listener
-        btnCalculate.setOnClickListener(onCalculateListener);
+        //btnCalculate.setOnClickListener(onCalculateListener);
+        ibtnSwitchCurrency.setOnClickListener(onSwitchCurrencyListener);
         spinnerStartCurrency.setOnItemSelectedListener(avoisl);
         spinnerTargetCurrency.setOnItemSelectedListener(avoisl);
+    }
+
+    private void onClickSwitchCurrency() {
+        Log.v(TAG, "onClickSwitchCurreny");
     }
 
     private void onClickCalculate() {

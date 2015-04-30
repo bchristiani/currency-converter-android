@@ -26,11 +26,17 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Spinner
             android:id="@+id/spinner_start_currency"
             style="@style/ConverterStyle"
             android:spinnerMode="dropdown"/>
+        <ImageButton
+            android:id="@+id/ibtn_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_rotate"/>
         <Spinner
             android:id="@+id/spinner_target_currency"
             style="@style/ConverterStyle"
