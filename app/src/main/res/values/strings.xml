@@ -2,13 +2,16 @@
     <string name="app_name">CurrencyConverter</string>
     <string name="title_activity_converter">Währungsumrechner</string>
 
-    <string name="label_start_curreny">Startwährung</string>
-    <string name="label_target_curreny">Zielwährung</string>
+    <string name="et_amount">Betrag eingeben...</string>
+    <string name="btn_calculate">Berechnen</string>
+    <string name="tv_result">Ergebnis:</string>
+    <string name="tv_start_curreny">Startwährung</string>
+    <string name="tv_target_curreny">Zielwährung</string>
     <string-array name="currencies">
         <item>EUR</item>
         <item>USD</item>
         <item>GRD</item>
     </string-array>
-
+    <string name="toast_hint">Bitte einen Betrag eingeben!</string>
     <string name="action_settings">Settings</string>
 </resources>

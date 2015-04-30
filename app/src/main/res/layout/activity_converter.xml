@@ -16,11 +16,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:text="@string/label_start_curreny"
+            android:text="@string/tv_start_curreny"
             style="@style/ConverterStyle"
             android:textStyle="bold"/>
         <TextView
-            android:text="@string/label_target_curreny"
+            android:text="@string/tv_target_curreny"
             style="@style/ConverterStyle"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -37,13 +37,15 @@
             android:spinnerMode="dropdown"/>
     </LinearLayout>
     <EditText
+        android:id="@+id/et_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Betrag eingeben..."/>
+        android:hint="@string/et_amount"/>
     <Button
+        android:id="@+id/btn_calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Berechnen"/>
+        android:text="@string/btn_calculate"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,11 +53,11 @@
         <TextView
             style="@style/ConverterStyle"
             android:gravity="center"
-            android:text="Ergebnis:"/>
+            android:text="@string/tv_result"/>
         <TextView
+            android:id="@+id/tv_result"
             style="@style/ConverterStyle"
-            android:gravity="center"
-            android:text="0.00"/>
+            android:gravity="center"/>
     </LinearLayout>
 
 </LinearLayout>
