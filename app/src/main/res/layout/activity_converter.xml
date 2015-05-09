@@ -42,6 +42,12 @@
                 android:hint="@string/et_target_amount"/>
         </LinearLayout>
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Beträge zurücksetzen"/>
     <TextView
         android:id="@+id/tv_timestamp"
         android:layout_marginTop="20dp"

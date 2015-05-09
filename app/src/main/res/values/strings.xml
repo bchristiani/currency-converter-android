@@ -7,5 +7,6 @@
     <string name="reference_currency">EUR</string>
     <string name="toast_hint">Bitte einen Betrag eingeben!</string>
     <string name="tv_date">Kursstand:</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_update">Kurse aktualisieren</string>
+    <string name="action_revert">Kurse zurücksetzen</string>
 </resources>

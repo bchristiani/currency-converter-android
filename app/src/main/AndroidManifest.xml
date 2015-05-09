@@ -6,9 +6,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/title_activity_converter"
-        android:theme="@android:style/Theme.Holo" >
+        android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
         <activity
             android:name=".activities.ConverterActivity"
+            android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/title_activity_converter" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

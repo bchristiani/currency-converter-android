@@ -1,5 +1,7 @@
 package de.medieninf.mobcomp.currencyconverter.logic;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,6 +12,7 @@ import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRateEntry;
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
 import de.medieninf.mobcomp.currencyconverter.logic.interfaces.CurrencyRateProvider;
 import de.medieninf.mobcomp.currencyconverter.persistence.DatabaseLoadManager;
+import de.medieninf.mobcomp.currencyconverter.persistence.DatabaseStoreManager;
 import de.medieninf.mobcomp.currencyconverter.persistence.FileLoadManager;
 import de.medieninf.mobcomp.currencyconverter.persistence.NetworkLoadManager;
 import de.medieninf.mobcomp.currencyconverter.persistence.interfaces.LoadManager;
@@ -24,22 +27,26 @@ public class CurrencyRateProviderImpl implements CurrencyRateProvider{
     private LoadManager lmDatabase;
     private LoadManager lmNetwork;
     private LoadManager lmFile;
+    private DatabaseStoreManager smDatabase;
     private String referencedCurrency;
 
-    public CurrencyRateProviderImpl(String referencedCurrency, InputStream initCurrenciesFile) {
+    public CurrencyRateProviderImpl(String referencedCurrency, SQLiteDatabase database, InputStream file) {
         this.referencedCurrency = referencedCurrency;
-        lmFile = new FileLoadManager("init", initCurrenciesFile);
-        lmDatabase = new DatabaseLoadManager("database");
+        lmFile = new FileLoadManager("init", file);
+        lmDatabase = new DatabaseLoadManager("database", database);
         lmNetwork = new NetworkLoadManager("network");
 
         lmNetwork.setSuccessor(lmDatabase);
         lmDatabase.setSuccessor(lmFile);
+
+        smDatabase = new DatabaseStoreManager(database);
     }
 
     @Override
     public boolean updateRates(final String state) {
         currencyRates = lmNetwork.load(state);
-        if(currencyRates != null) {
+        if(currencyRates != null && state.compareTo("database")!=0) {
+            smDatabase.store(currencyRates);
             return true;
         }
         return false;

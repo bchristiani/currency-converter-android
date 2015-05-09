@@ -27,8 +27,16 @@ public class CurrencyRates {
         return currencyRates.get(currency);
     }
 
+    public List<CurrencyRateEntry> getCurrencyRateEntries() {
+        List<CurrencyRateEntry> list = new ArrayList<>();
+        for(CurrencyRateEntry entry: currencyRates.values()) {
+            list.add(entry);
+        }
+        return list;
+    }
+
     public List<CharSequence> getCurrencies() {
-        List<CharSequence> list = new ArrayList<CharSequence>();
+        List<CharSequence> list = new ArrayList<>();
         for(CurrencyRateEntry entry: currencyRates.values()) {
             list.add(entry.getCurrency());
         }
@@ -41,15 +49,5 @@ public class CurrencyRates {
 
     public Date getTimestamp() {
         return timestamp;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(timestamp.toString() + "\n");
-        for(CurrencyRateEntry entry :currencyRates.values()) {
-            sb.append(entry.getCurrency() + ":" + entry.getRate() + "\n");
-        }
-        return sb.toString();
     }
 }
