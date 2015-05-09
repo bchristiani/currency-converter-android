@@ -1,11 +1,11 @@
-package de.medieninf.mobcomp.currencyconverter.utils;
+package de.medieninf.mobcomp.currencyconverter.util;
 
 import java.math.BigDecimal;
 
 /**
  * Created by bchristiani on 30.04.2015.
  */
-public final class ConverterUtil {
+public final class CurrencyConverterUtil {
 
     public static enum Type {EURO_TO_OTHER, OTHER_TO_EURO};
 
@@ -38,15 +38,18 @@ public final class ConverterUtil {
         return convertOtherCurrency(amountBd,startRateBd,targetRateBd);
     }
 
-    public static String getFormattedAmount(final String amount, final String currency) {
-        return amount.replace(".", ",") + " " + currency;
-    }
-
     public static boolean isNumeric(final String s) {
-        return s.matches("[-+]?\\d*\\.?\\d+");
+        String value = s;
+        if(s.endsWith(".")) {
+            value = s.concat("0");
+        }
+        if(s.startsWith(".")) {
+            value = "0".concat(s);
+        }
+        return value.matches("[-+]?\\d*\\.?\\d+");
     }
 
-    private ConverterUtil() {
+    private CurrencyConverterUtil() {
         throw new IllegalAccessError("Private constructor should never be used.");
     }
 }

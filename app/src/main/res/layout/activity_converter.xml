@@ -4,66 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <Spinner
+                android:id="@+id/spinner_start_currency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"/>
+            <EditText
+                android:id="@+id/et_start_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/et_start_amount"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <Spinner
+                android:id="@+id/spinner_target_currency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"/>
+            <EditText
+                android:id="@+id/et_target_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/et_target_amount"/>
+        </LinearLayout>
+    </LinearLayout>
     <TextView
-        android:text="@string/title_activity_converter"
+        android:id="@+id/tv_timestamp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:text="@string/tv_start_curreny"
-            style="@style/ConverterStyle"
-            android:textStyle="bold"/>
-        <TextView
-            android:text="@string/tv_target_curreny"
-            style="@style/ConverterStyle"
-            android:textStyle="bold"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Spinner
-            android:id="@+id/spinner_start_currency"
-            style="@style/ConverterStyle"
-            android:spinnerMode="dropdown"/>
-        <ImageButton
-            android:id="@+id/ibtn_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_rotate"/>
-        <Spinner
-            android:id="@+id/spinner_target_currency"
-            style="@style/ConverterStyle"
-            android:spinnerMode="dropdown"/>
-    </LinearLayout>
-    <EditText
-        android:id="@+id/et_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/et_amount"/>
-    <Button
-        android:id="@+id/btn_calculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_calculate"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            style="@style/ConverterStyle"
-            android:gravity="center"
-            android:text="@string/tv_result"/>
-        <TextView
-            android:id="@+id/tv_result"
-            style="@style/ConverterStyle"
-            android:gravity="center"/>
-    </LinearLayout>
-
+        android:text="Kursstand: 01.05.2015"/>
 </LinearLayout>

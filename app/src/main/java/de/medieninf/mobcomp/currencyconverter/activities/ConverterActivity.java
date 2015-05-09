@@ -1,138 +1,234 @@
 package de.medieninf.mobcomp.currencyconverter.activities;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
+import android.text.method.TextKeyListener;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.io.InputStream;
 import de.medieninf.mobcomp.currencyconverter.R;
-import de.medieninf.mobcomp.currencyconverter.utils.ConverterUtil;
+import de.medieninf.mobcomp.currencyconverter.logic.CurrencyRateProviderImpl;
+import de.medieninf.mobcomp.currencyconverter.logic.interfaces.CurrencyRateProvider;
+import de.medieninf.mobcomp.currencyconverter.util.CurrencyConverterUtil;
 
 
 public class ConverterActivity extends Activity {
 
-    private static String TAG = ConverterActivity.class.getSimpleName();
+    private final static String TAG = ConverterActivity.class.getSimpleName();
+    private final static String AMOUNT_INPUT_KEY = "amountInput";
+    private final static String START_CURRENCY_KEY = "startCurrency";
+    private final static String TARGET_CURRENCY_KEY = "targetCurrency";
 
+    private Toast toast;
     private Spinner spinnerStartCurrency;
     private Spinner spinnerTargetCurrency;
-    private Button btnCalculate;
-    private ImageButton ibtnSwitchCurrency;
-    private TextView tvResult;
-    private EditText etAmount;
-    private Toast toast;
+    private EditText etStartAmount;
+    private EditText etTargetAmount;
+    private TextView tvTimestamp;
     private String selectedStartCurrency;
     private String selectedTargetCurrency;
+    private CurrencyRateProvider currencyRateProvider;
+    private String referencedCurrency;
+    private String tvDate;
+    private SharedPreferences prefs;
+    private boolean setTextFlag;
 
-    private View.OnClickListener onSwitchCurrencyListener = new View.OnClickListener() {
+    private TextWatcher twStartAmount = new TextWatcher() {
         @Override
-        public void onClick(View v) {
-            onClickSwitchCurrency();
-            //onClickCalculate();
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            Log.v(TAG, "afterTextChanged ");
+            setText(etTargetAmount, selectedStartCurrency, selectedTargetCurrency, etStartAmount.getText().toString());
         }
     };
 
 
+        private TextWatcher twTargetAmount = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-    // TODO: eigene Klasse
-    private AdapterView.OnItemSelectedListener avoisl = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.v(TAG, "afterTextChanged");
+                setText(etStartAmount, selectedTargetCurrency, selectedStartCurrency, etTargetAmount.getText().toString());
+            }
+        };
+
+        private AdapterView.OnItemSelectedListener avoisl = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.v(TAG, "onItemSelected");
+                final String selected = (String) parent.getSelectedItem();
+                final int parentId = parent.getId();
+                if (spinnerStartCurrency != null && parentId == spinnerStartCurrency.getId()) {
+                    selectedStartCurrency = selected;
+                } else if (spinnerTargetCurrency != null && parentId == spinnerTargetCurrency.getId()) {
+                    selectedTargetCurrency = selected;
+                }
+
+                currencyChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.v(TAG, "onNothingSelected");
+            }
+        };
+
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Log.v(TAG,"onItemSelected");
-            final String selected = (String) parent.getSelectedItem();
-            final int parentId = parent.getId();
-            if (spinnerStartCurrency!=null && parentId == spinnerStartCurrency.getId()) {
-                selectedStartCurrency = selected;
-            } else if(spinnerTargetCurrency!=null && parentId == spinnerTargetCurrency.getId()) {
-                selectedTargetCurrency = selected;
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            Log.v(TAG, "onCreate");
+            setContentView(R.layout.activity_converter);
+
+            prefs = getPreferences(MODE_PRIVATE);
+            final String startCurrency = prefs.getString(START_CURRENCY_KEY,null);
+            final String targetCurrency = prefs.getString(TARGET_CURRENCY_KEY,null);
+            final String inputAmount = prefs.getString(AMOUNT_INPUT_KEY,null);
+
+            InputStream initCurrenciesXml = getResources().openRawResource(R.raw.euro_currency_rates);
+            referencedCurrency = getResources().getString(R.string.reference_currency);
+            tvDate = getResources().getString(R.string.tv_date);
+            currencyRateProvider = new CurrencyRateProviderImpl(referencedCurrency, initCurrenciesXml);
+            currencyRateProvider.updateRates("init");
+
+            // instantiate widgets
+            spinnerStartCurrency = (Spinner) findViewById(R.id.spinner_start_currency);
+            spinnerTargetCurrency = (Spinner) findViewById(R.id.spinner_target_currency);
+            etStartAmount = (EditText) findViewById(R.id.et_start_amount);
+            etStartAmount.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+            etTargetAmount = (EditText) findViewById(R.id.et_target_amount);
+            tvTimestamp = (TextView) findViewById(R.id.tv_timestamp);
+            tvTimestamp.setText(tvDate.concat(currencyRateProvider.getDate()));
+            toast = Toast.makeText(ConverterActivity.this, R.string.toast_hint, Toast.LENGTH_SHORT);
+            etTargetAmount.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+            // set adapter
+            ArrayAdapter<CharSequence> adapterStartCurrency = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencyRateProvider.getCurrencies());
+            adapterStartCurrency.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerStartCurrency.setAdapter(adapterStartCurrency);
+            if(startCurrency != null) {
+                int posStartCurrency = adapterStartCurrency.getPosition(startCurrency);
+                spinnerStartCurrency.setSelection(posStartCurrency);
+            }
+
+            ArrayAdapter<CharSequence> adapterTargetCurrency = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencyRateProvider.getCurrencies());
+            adapterTargetCurrency.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerTargetCurrency.setAdapter(adapterTargetCurrency);
+            if(targetCurrency != null) {
+                int posTargetCurrency = adapterTargetCurrency.getPosition(targetCurrency);
+                spinnerTargetCurrency.setSelection(posTargetCurrency);
+            }
+
+            // set listener
+            etStartAmount.addTextChangedListener(twStartAmount);
+            etTargetAmount.addTextChangedListener(twTargetAmount);
+            spinnerStartCurrency.setOnItemSelectedListener(avoisl);
+            spinnerTargetCurrency.setOnItemSelectedListener(avoisl);
+
+            if(inputAmount != null) {
+                etStartAmount.setText(inputAmount);
             }
         }
 
         @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-            Log.v(TAG,"onNothingSelected");
+        protected void onPause() {
+            Log.v(TAG, "onPause");
+            super.onPause();
+            final SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(AMOUNT_INPUT_KEY,etStartAmount.getText().toString());
+            editor.putString(START_CURRENCY_KEY,selectedStartCurrency);
+            editor.putString(TARGET_CURRENCY_KEY,selectedTargetCurrency);
+            editor.commit();
         }
-    };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.v(TAG, "onCreate");
-        setContentView(R.layout.activity_converter);
+        @Override
+        protected void onStop() {
+            super.onStop();
+            Log.v(TAG, "onStop");
+        }
 
-        // instantiate widgets
-        spinnerStartCurrency = (Spinner) findViewById(R.id.spinner_start_currency);
-        spinnerTargetCurrency = (Spinner) findViewById(R.id.spinner_target_currency);
-        btnCalculate = (Button) findViewById(R.id.btn_calculate);
-        ibtnSwitchCurrency = (ImageButton) findViewById(R.id.ibtn_switch);
-        tvResult = (TextView) findViewById(R.id.tv_result);
-        etAmount = (EditText) findViewById(R.id.et_amount);
-        etAmount.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        toast = Toast.makeText(ConverterActivity.this,R.string.toast_hint, Toast.LENGTH_SHORT);
+        @Override
+        protected void onDestroy() {
+            super.onDestroy();
+            Log.v(TAG, "onDestroy");
+        }
 
-        // set adapter
-        ArrayAdapter<CharSequence> adapterStartCurrency = ArrayAdapter.createFromResource(this, R.array.currencies, android.R.layout.simple_spinner_item);
-        adapterStartCurrency.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerStartCurrency.setAdapter(adapterStartCurrency);
+        @Override
+        protected void onStart() {
+            super.onStart();
+            Log.v(TAG, "onStart");
+        }
 
-        ArrayAdapter<CharSequence> adapterTargetCurrency = ArrayAdapter.createFromResource(this, R.array.currencies, android.R.layout.simple_spinner_item);
-        adapterTargetCurrency.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerTargetCurrency.setAdapter(adapterTargetCurrency);
-
-        // set listener
-        //btnCalculate.setOnClickListener(onCalculateListener);
-        ibtnSwitchCurrency.setOnClickListener(onSwitchCurrencyListener);
-        spinnerStartCurrency.setOnItemSelectedListener(avoisl);
-        spinnerTargetCurrency.setOnItemSelectedListener(avoisl);
-    }
-
-    private void onClickSwitchCurrency() {
-        Log.v(TAG, "onClickSwitchCurreny");
-    }
-
-    private void onClickCalculate() {
-        Log.v(TAG, "onClickCalculate");
-        String etAmountText = etAmount.getText().toString();
-        String result = "";
-        //TODO: Check if input text is a number within Util class.
-        if(etAmountText.length() > 0 && ConverterUtil.isNumeric(etAmountText)) {
-            if (selectedStartCurrency.compareTo(selectedTargetCurrency) == 0) {
-                result = ConverterUtil.convertOtherCurrency(etAmountText, 1, 1);
-            } else if (selectedStartCurrency.compareTo("EUR")==0 && selectedTargetCurrency.compareTo("EUR") != 0) {
-                result = ConverterUtil.convertEuroCurrency(etAmountText, ConverterUtil.Type.EURO_TO_OTHER, getRate(selectedTargetCurrency));
-            } else if(selectedStartCurrency.compareTo("EUR")!=0 && selectedTargetCurrency.compareTo("EUR") != 0) {
-                result = ConverterUtil.convertOtherCurrency(etAmountText,getRate(selectedStartCurrency),getRate(selectedTargetCurrency));
-            } else if(selectedStartCurrency.compareTo("EUR") !=0 && selectedTargetCurrency.compareTo("EUR") == 0) {
-                result = ConverterUtil.convertEuroCurrency(etAmountText, ConverterUtil.Type.OTHER_TO_EURO, getRate(selectedStartCurrency));
+        private String calculateCurrency(String startCurrency, String targetCurrency, String amount) {
+            String result = "";
+            if (amount.length() > 0 && CurrencyConverterUtil.isNumeric(amount)) {
+                if (startCurrency.compareTo(targetCurrency) == 0) {
+                    result = CurrencyConverterUtil.convertOtherCurrency(amount, 1, 1);
+                } else if (startCurrency.compareTo(referencedCurrency) == 0 && targetCurrency.compareTo(referencedCurrency) != 0) {
+                    result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.EURO_TO_OTHER, currencyRateProvider.getRate(targetCurrency));
+                } else if (startCurrency.compareTo(referencedCurrency) != 0 && targetCurrency.compareTo(referencedCurrency) != 0) {
+                    result = CurrencyConverterUtil.convertOtherCurrency(amount, currencyRateProvider.getRate(startCurrency), currencyRateProvider.getRate(targetCurrency));
+                } else if (startCurrency.compareTo(referencedCurrency) != 0 && targetCurrency.compareTo(referencedCurrency) == 0) {
+                    result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.OTHER_TO_EURO, currencyRateProvider.getRate(startCurrency));
+                }
             }
-            // set content of Text View Widget for the result
-            String formattedResult = ConverterUtil.getFormattedAmount(result,selectedTargetCurrency);
-            tvResult.setText(formattedResult);
-        } else {
-            toast.show();
+            return result;
+        }
+
+        private void setText(EditText etWidget, String startCurrency, String targetCurrency, String amount) {
+            if (setTextFlag) {
+                setTextFlag = false;
+            } else {
+                if (startCurrency != null || targetCurrency != null) {
+                    Log.v(TAG, "setText");
+                    setTextFlag = true;
+                    String result = calculateCurrency(startCurrency, targetCurrency, amount);
+                    if (result.isEmpty()) {
+                        TextKeyListener.clear(etWidget.getText());
+                        toast.show();
+                    } else {
+                        etWidget.setText(result);
+                    }
+                }
+            }
+        }
+
+        private void currencyChanged() {
+            if (selectedStartCurrency != null && selectedTargetCurrency != null) {
+                Log.v(TAG, "currencyChanged");
+                final String startAmount = etStartAmount.getText().toString();
+                final String targetAmount = etTargetAmount.getText().toString();
+                if (!startAmount.isEmpty()) {
+                    setText(etTargetAmount, selectedStartCurrency, selectedTargetCurrency, etStartAmount.getText().toString());
+                } else if (!targetAmount.isEmpty()) {
+                    setText(etStartAmount, selectedTargetCurrency, selectedStartCurrency, etTargetAmount.getText().toString());
+                } else {
+                    toast.show();
+                }
+            }
         }
     }
 
-    private float getRate(final String currency) {
-        TypedValue outValue = new TypedValue();
-        int id;
-        if(currency.compareTo("USD")==0) {
-            id = R.dimen.usd_rate;
-        } else if(currency.compareTo("GRD") == 0) {
-            id = R.dimen.grd_rate;
-        } else {
-            id = R.dimen.eur_rate;
-        }
-        getResources().getValue(id,outValue,true);
-        return outValue.getFloat();
-    }
-}

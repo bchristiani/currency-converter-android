@@ -5,10 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="ConverterStyle" parent="Base.TextAppearance.AppCompat">
-        <item name="android:layout_weight">1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
     </style>
 
 </resources>
