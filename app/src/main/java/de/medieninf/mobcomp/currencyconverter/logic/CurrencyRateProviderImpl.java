@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,11 +31,11 @@ public class CurrencyRateProviderImpl implements CurrencyRateProvider{
     private DatabaseStoreManager smDatabase;
     private String referencedCurrency;
 
-    public CurrencyRateProviderImpl(String referencedCurrency, SQLiteDatabase database, InputStream file) {
+    public CurrencyRateProviderImpl(String referencedCurrency, SQLiteDatabase database, InputStream file, String url) {
         this.referencedCurrency = referencedCurrency;
-        lmFile = new FileLoadManager("init", file);
-        lmDatabase = new DatabaseLoadManager("database", database);
-        lmNetwork = new NetworkLoadManager("network");
+        lmFile = new FileLoadManager(LoadManager.LoaderType.INIT, file);
+        lmDatabase = new DatabaseLoadManager(LoadManager.LoaderType.DATABASE, database);
+        lmNetwork = new NetworkLoadManager(LoadManager.LoaderType.NETWORK, url);
 
         lmNetwork.setSuccessor(lmDatabase);
         lmDatabase.setSuccessor(lmFile);
@@ -43,22 +44,43 @@ public class CurrencyRateProviderImpl implements CurrencyRateProvider{
     }
 
     @Override
-    public boolean updateRates(final String state) {
-        currencyRates = lmNetwork.load(state);
-        if(currencyRates != null && state.compareTo("database")!=0) {
-            smDatabase.store(currencyRates);
-            return true;
+    public boolean updateRates(LoadManager.LoaderType type) throws Exception {
+        CurrencyRates cr;
+        // when to load data
+        if(LoadManager.LoaderType.INIT == type || updateNeccessary()) {
+            cr = lmNetwork.load(type);
+
+            if (cr != null) {
+                if(currencyRates != null) {
+                    // checks if the timestamp of the new rates is different
+                    Date lastUpdate = currencyRates.getTimestamp();
+                    if (DateUtil.isSameDate(lastUpdate, cr.getTimestamp())) {
+                        return false; // nothing changed
+                    }
+                }
+                currencyRates = cr;
+                // when to store data
+                if(LoadManager.LoaderType.DATABASE != type) {
+                    smDatabase.store(currencyRates);
+                }
+                return true;
+            }
         }
+
         return false;
     }
 
+
     @Override
     public float getRate(final String currency) {
-        float entry = 0;
+        float entryRate = 1;
         if(currencyRates != null) {
-            entry = currencyRates.getRateEntry(currency).getRate();
+            CurrencyRateEntry entry = currencyRates.getRateEntry(currency);
+            if(entry != null) {
+                entryRate = entry.getRate();
+            }
         }
-        return entry;
+        return entryRate;
     }
 
     @Override
@@ -77,8 +99,24 @@ public class CurrencyRateProviderImpl implements CurrencyRateProvider{
     }
 
     @Override
-    public String getDate() {
-        return DateUtil.formatDate(currencyRates.getTimestamp(), "dd.MM.yyyy");
+    public String getDate(String format) {
+        if(format != null) {
+            return DateUtil.formatDate(currencyRates.getTimestamp(), format);
+        }
+        return "";
+    }
+
+    private boolean updateNeccessary() {
+        if(currencyRates != null) {
+            final Date lastUpdate = currencyRates.getTimestamp();
+            if(DateUtil.isToday(lastUpdate)) {
+                return false;
+            } else if(DateUtil.isWeekend()) {
+                Date lastFriday = DateUtil.getLastFriday();
+                return !DateUtil.isSameDate(lastUpdate, lastFriday);
+            }
+        }
+        return true;
     }
 
 }

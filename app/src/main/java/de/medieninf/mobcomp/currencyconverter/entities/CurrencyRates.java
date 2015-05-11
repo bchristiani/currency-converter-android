@@ -23,7 +23,6 @@ public class CurrencyRates {
     }
 
     public CurrencyRateEntry getRateEntry(String currency) {
-        //TODO: Check if map contains key
         return currencyRates.get(currency);
     }
 

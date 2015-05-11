@@ -5,8 +5,13 @@
     <string name="et_target_amount">Zielbetrag...</string>
     <string name="btn_calculate">Berechnen</string>
     <string name="reference_currency">EUR</string>
-    <string name="toast_hint">Bitte einen Betrag eingeben!</string>
     <string name="tv_date">Kursstand:</string>
     <string name="action_update">Kurse aktualisieren</string>
     <string name="action_revert">Kurse zurücksetzen</string>
+    <string name="currency_url_ezb">https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml</string>
+    <string name="progress_headline">Lade Kursdaten...</string>
+    <string name="progress_text"></string>
+    <string name="msg_rates_up_to_date">Kurse bereits aktuell!</string>
+    <string name="error_msg_network">Netzwerkfehler!</string>
+    <string name="rate_date_format">dd.MM.yyyy</string>
 </resources>

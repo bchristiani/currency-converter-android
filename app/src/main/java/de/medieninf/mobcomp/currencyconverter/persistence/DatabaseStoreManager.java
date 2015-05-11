@@ -9,6 +9,8 @@ import android.util.Log;
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRateEntry;
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
 import de.medieninf.mobcomp.currencyconverter.persistence.db.CurrencyDatabaseHelper;
+import de.medieninf.mobcomp.currencyconverter.persistence.db.schema.CurrencyRateColums;
+import de.medieninf.mobcomp.currencyconverter.persistence.db.schema.CurrencyRatesTbl;
 import de.medieninf.mobcomp.currencyconverter.util.DateUtil;
 
 /**
@@ -36,13 +38,20 @@ public class DatabaseStoreManager {
             Log.v(TAG, "start updateDatabase");
             // insert or update row into database
             ContentValues args = new ContentValues();
-            final String timestamp = DateUtil.formatDate(currencyRates.getTimestamp(), "yyyy-MM-dd");
-            for (CurrencyRateEntry entry: currencyRates.getCurrencyRateEntries()) {
-                args.put("currency", entry.getCurrency());
-                args.put("rate", entry.getRate());
-                args.put("timestamp", timestamp);
-                database.insertWithOnConflict("currencies", null, args, SQLiteDatabase.CONFLICT_REPLACE);
+            final String timestamp = DateUtil.formatDate(currencyRates.getTimestamp(), CurrencyRatesTbl.TIMESTAMP_FORMAT);
+            database.beginTransaction();
+            try {
+                for (CurrencyRateEntry entry: currencyRates.getCurrencyRateEntries()) {
+                    args.put(CurrencyRateColums.CURRENCY, entry.getCurrency());
+                    args.put(CurrencyRateColums.RATE, entry.getRate());
+                    args.put(CurrencyRateColums.TIMESTAMP, timestamp);
+                    database.insertWithOnConflict(CurrencyRatesTbl.TABLE_NAME, null, args, SQLiteDatabase.CONFLICT_REPLACE);
+                }
+                database.setTransactionSuccessful();
+            } finally {
+                database.endTransaction();
             }
+
             return null;
         }
 

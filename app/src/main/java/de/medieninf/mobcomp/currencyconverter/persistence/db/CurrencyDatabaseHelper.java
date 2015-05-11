@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import de.medieninf.mobcomp.currencyconverter.persistence.db.schema.CurrencyRatesTbl;
+
 /**
  * Created by bchristiani on 09.05.2015.
  */
@@ -34,13 +36,13 @@ public class CurrencyDatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.v(TAG, "onCreateTable");
-        db.execSQL("CREATE TABLE currencies (currency TEXT PRIMARY KEY NOT NULL, rate REAL NOT NULL, timestamp TEXT NOT NULL)");
+        db.execSQL(CurrencyRatesTbl.SQL_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.v(TAG, "onUpgradeTable");
-        db.execSQL("DROP TABLE IF EXISTS currencies");
+        db.execSQL(CurrencyRatesTbl.SQL_DROP);
         onCreate(db);
     }
 }

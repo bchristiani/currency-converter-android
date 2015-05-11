@@ -7,10 +7,10 @@ import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
  */
 public abstract class LoadManager {
     protected LoadManager lmSuccessor;
-    protected String state;
+    protected LoaderType type;
 
-    public LoadManager(final String state) {
-        this.state = state;
+    public LoadManager(LoaderType type) {
+        this.type = type;
     }
 
     public void setSuccessor(LoadManager successor)
@@ -18,5 +18,9 @@ public abstract class LoadManager {
         lmSuccessor = successor;
     }
 
-    public abstract CurrencyRates load(final String state);
+    public abstract CurrencyRates load(LoaderType type) throws Exception;
+
+    public static enum LoaderType {
+        INIT,DATABASE,NETWORK;
+    }
 }

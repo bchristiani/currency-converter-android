@@ -3,7 +3,6 @@ package de.medieninf.mobcomp.currencyconverter.persistence;
 import android.util.Log;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
@@ -21,8 +20,8 @@ public class FileLoadManager extends LoadManager{
     private Consumer consumer;
     private byte[] fileByteArray;
 
-    public FileLoadManager(final String state, InputStream in) {
-        super(state);
+    public FileLoadManager(LoaderType type, InputStream in) {
+        super(type);
         this.consumer = new XMLConsumer();
         try {
             this.fileByteArray  = StreamUtil.toByteArray(in);
@@ -33,18 +32,13 @@ public class FileLoadManager extends LoadManager{
     }
 
     @Override
-    public CurrencyRates load(final String state) {
-        if(state.equals(this.state)) {
-            CurrencyRates cr = null;
-            try {
-                cr = this.consumer.parse(new ByteArrayInputStream(fileByteArray));
-            } catch (IOException e) {
-                // TODO: Log statement
-                e.printStackTrace();
-            }
+    public CurrencyRates load(LoaderType type) throws Exception{
+        if(type == this.type) {
+            CurrencyRates cr;
+            cr = this.consumer.parse(new ByteArrayInputStream(fileByteArray));
             return cr;
         } else {
-            return this.lmSuccessor.load(state);
+            return this.lmSuccessor.load(type);
         }
     }
 }

@@ -1,6 +1,5 @@
 package de.medieninf.mobcomp.currencyconverter.helper;
 
-import android.util.Log;
 import android.util.Xml;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -11,6 +10,7 @@ import java.text.ParseException;
 
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRateEntry;
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
+import de.medieninf.mobcomp.currencyconverter.exceptions.IllegalCurrencyException;
 import de.medieninf.mobcomp.currencyconverter.helper.interfaces.Consumer;
 import de.medieninf.mobcomp.currencyconverter.util.DateUtil;
 
@@ -19,49 +19,53 @@ import de.medieninf.mobcomp.currencyconverter.util.DateUtil;
  */
 public class XMLConsumer implements Consumer{
 
+    public static String TIMESTAMP_PATTERN = "yyyy-MM-dd";
+    public static String CURRENCY_NODE = "Cube";
+    public static String TIMESTAMP_ATTRIBUTE = "time";
+    public static String CURRENCY_ATTRIBUTE = "currency";
+    public static String RATE_ATTRIBUTE = "rate";
+    public static int COUNT_ATTRIBUTES = 2;
+
     private static String TAG = XMLConsumer.class.getSimpleName();
-    private static final String ns = null;
 
     @Override
-    public CurrencyRates parse(InputStream in) throws IOException {
+    public CurrencyRates parse(InputStream in) throws IllegalCurrencyException {
         CurrencyRates cr = null;
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
             cr = read(parser);
-        } catch (XmlPullParserException e) {
-            Log.e(TAG, "XxmlPullParserException");
+        } catch (XmlPullParserException | ParseException | IOException e) {
             e.printStackTrace();
+            throw new IllegalCurrencyException(e.getMessage());
         } finally {
-            in.close();
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new IllegalCurrencyException(e.getMessage());
+            }
         }
         return cr;
     }
 
-    private CurrencyRates read(XmlPullParser parser) throws IOException, XmlPullParserException {
+    private CurrencyRates read(XmlPullParser parser) throws IOException, XmlPullParserException, ParseException {
         CurrencyRates cr = new CurrencyRates();
         int eventType = parser.getEventType();
         while(eventType != XmlPullParser.END_DOCUMENT) {
             if(eventType == XmlPullParser.START_TAG) {
-                //TODO: Strings into resource file
                 String nodeName = parser.getName();
                 int countAttribute = parser.getAttributeCount();
-                if (nodeName.equals("Cube")) {
-                    if(countAttribute == 1) {
-                        final String timestampValue = parser.getAttributeValue(null, "time");
-                        try {
-                            cr.setTimestamp(DateUtil.parseStringToDate(timestampValue, "yyyy-MM-dd"));
-                        } catch (ParseException e) {
-                            Log.e(TAG, "ParceException while parsing timestamp.");
-                            e.printStackTrace();
-                        }
-                    } else if(countAttribute == 2) {
-                        final String currencyValue = parser.getAttributeValue(null, "currency");
-                        final String rateValue = parser.getAttributeValue(null, "rate");
+                if (nodeName.equals(CURRENCY_NODE)) {
+                    if(countAttribute == COUNT_ATTRIBUTES-1) {
+                        final String timestampValue = parser.getAttributeValue(null, TIMESTAMP_ATTRIBUTE);
+                        cr.setTimestamp(DateUtil.parseStringToDate(timestampValue, TIMESTAMP_PATTERN));
+                    } else if(countAttribute == COUNT_ATTRIBUTES) {
+                        final String currencyValue = parser.getAttributeValue(null, CURRENCY_ATTRIBUTE);
+                        final String rateValue = parser.getAttributeValue(null, RATE_ATTRIBUTE);
                         CurrencyRateEntry entry = new CurrencyRateEntry(currencyValue, convertStringToFloat(rateValue));
                         cr.addCurrencyRateEntry(entry);
-
                     }
                 }
             }
