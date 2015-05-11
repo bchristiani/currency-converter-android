@@ -1,12 +1,15 @@
 package de.medieninf.mobcomp.currencyconverter.helper;
 
 import android.util.Xml;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.ParseException;
+import java.util.Date;
 
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRateEntry;
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
@@ -19,12 +22,12 @@ import de.medieninf.mobcomp.currencyconverter.util.DateUtil;
  */
 public class XMLConsumer implements Consumer{
 
-    public static String TIMESTAMP_PATTERN = "yyyy-MM-dd";
-    public static String CURRENCY_NODE = "Cube";
-    public static String TIMESTAMP_ATTRIBUTE = "time";
-    public static String CURRENCY_ATTRIBUTE = "currency";
-    public static String RATE_ATTRIBUTE = "rate";
-    public static int COUNT_ATTRIBUTES = 2;
+    private static String TIMESTAMP_PATTERN = "EEE, dd MMMMM yyyy hh:mm:ss z";
+    private static String TIMESTAMP_NODE = "lastBuildDate";
+    private static String CURRENCY_NODE = "item";
+    private static String TARGET_CURRENCY_NODE = "targetCurrency";
+    private static String RATE_NODE = "exchangeRate";
+    private static String NAME_NODE = "targetName";
 
     private static String TAG = XMLConsumer.class.getSimpleName();
 
@@ -51,30 +54,43 @@ public class XMLConsumer implements Consumer{
     }
 
     private CurrencyRates read(XmlPullParser parser) throws IOException, XmlPullParserException, ParseException {
-        CurrencyRates cr = new CurrencyRates();
+        CurrencyRates cr = null;
         int eventType = parser.getEventType();
+        CurrencyRateEntry entry = null;
         while(eventType != XmlPullParser.END_DOCUMENT) {
-            if(eventType == XmlPullParser.START_TAG) {
-                String nodeName = parser.getName();
-                int countAttribute = parser.getAttributeCount();
-                if (nodeName.equals(CURRENCY_NODE)) {
-                    if(countAttribute == COUNT_ATTRIBUTES-1) {
-                        final String timestampValue = parser.getAttributeValue(null, TIMESTAMP_ATTRIBUTE);
-                        cr.setTimestamp(DateUtil.parseStringToDate(timestampValue, TIMESTAMP_PATTERN));
-                    } else if(countAttribute == COUNT_ATTRIBUTES) {
-                        final String currencyValue = parser.getAttributeValue(null, CURRENCY_ATTRIBUTE);
-                        final String rateValue = parser.getAttributeValue(null, RATE_ATTRIBUTE);
-                        CurrencyRateEntry entry = new CurrencyRateEntry(currencyValue, convertStringToFloat(rateValue));
+            String name = null;
+            switch(eventType) {
+                case XmlPullParser.START_DOCUMENT:
+                    cr = new CurrencyRates();
+                    break;
+                case XmlPullParser.START_TAG:
+                    name = parser.getName();
+                    if(name.compareTo(CURRENCY_NODE)==0) {
+                        entry = new CurrencyRateEntry();
+                    } else if(name.compareTo(TARGET_CURRENCY_NODE)==0) {
+                        entry.setCurrency(parser.nextText());
+                    } else if(name.compareTo(RATE_NODE) == 0) {
+                        entry.setRate(convertStringToFloat(parser.nextText()));
+                    } else if(name.compareTo(NAME_NODE) == 0) {
+                        entry.setName(parser.nextText());
+                    } else if(name.compareTo(TIMESTAMP_NODE) == 0) {
+                        Date timestamp = DateUtil.parseStringToDate(parser.nextText(), TIMESTAMP_PATTERN);
+                        cr.setTimestamp(timestamp);
+                    }
+                   break;
+                case XmlPullParser.END_TAG:
+                    name = parser.getName();
+                    if(name.equalsIgnoreCase(CURRENCY_NODE) && entry != null) {
                         cr.addCurrencyRateEntry(entry);
                     }
-                }
             }
             eventType = parser.next();
         }
         return cr;
     }
 
-    private float convertStringToFloat(final String val) {
+    private float convertStringToFloat(final String value) {
+        String val = value.replaceAll(",", ""); // in some cases is "," a separator for the thousends
         BigDecimal bd = new BigDecimal(val);
         return bd.floatValue();
     }

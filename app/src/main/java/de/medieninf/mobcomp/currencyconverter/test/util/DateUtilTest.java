@@ -17,6 +17,11 @@ public class DateUtilTest extends InstrumentationTestCase{
         DateUtil.parseStringToDate(dateAsString, "yyy-MM-DD");
     }
 
+    public void testParseStringToDate2() throws Exception {
+        final String dateAsString = "Mon, 11 May 2015 12:00:01 GMT";
+        DateUtil.parseStringToDate(dateAsString, "EEE, dd MMMMM yyyy hh:mm:ss z");
+    }
+
     public void testIsToday() throws Exception {
         final Date today = Calendar.getInstance().getTime();
         assertTrue(DateUtil.isToday(today));

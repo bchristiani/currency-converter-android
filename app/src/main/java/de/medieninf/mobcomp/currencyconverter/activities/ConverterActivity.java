@@ -33,6 +33,7 @@ import de.medieninf.mobcomp.currencyconverter.persistence.db.CurrencyDatabaseHel
 import de.medieninf.mobcomp.currencyconverter.persistence.db.schema.CurrencyRatesTbl;
 import de.medieninf.mobcomp.currencyconverter.persistence.interfaces.LoadManager;
 import de.medieninf.mobcomp.currencyconverter.util.CurrencyConverterUtil;
+import de.medieninf.mobcomp.currencyconverter.util.CurrencyEntryUtil;
 
 
 public class ConverterActivity extends ActionBarActivity {
@@ -141,11 +142,11 @@ public class ConverterActivity extends ActionBarActivity {
         Log.v(TAG, "onOptionsItemSelected");
         switch(item.getItemId()) {
             case R.id.action_update:
-                pDialog = ProgressDialog.show(this, "Bitte Warten", "Lade Kursdaten...", true);
+                pDialog = ProgressDialog.show(this, res.getString(R.string.progress_headline), res.getString(R.string.progress_text), true);
                 new UpdateTask().execute(LoadManager.LoaderType.NETWORK);
                 return true;
             case R.id.action_revert:
-                pDialog = ProgressDialog.show(this, "Bitte Warten", "Lade Kursdaten...", true);
+                pDialog = ProgressDialog.show(this, res.getString(R.string.progress_headline), res.getString(R.string.progress_text), true);
                 new UpdateTask().execute(LoadManager.LoaderType.INIT);
                 return true;
             default:
@@ -244,7 +245,7 @@ public class ConverterActivity extends ActionBarActivity {
     private void refreshGUI(final String startAmount) {
         Log.v(TAG, "refreshGUI");
         tvTimestamp.setText(tvDate.concat(currencyRateProvider.getDate(res.getString(R.string.rate_date_format))));
-        if(!startAmount.isEmpty())
+        if(startAmount!=null && !startAmount.isEmpty())
             etStartAmount.setText(startAmount);
         if(pDialog!=null) {
             pDialog.dismiss();
@@ -285,11 +286,11 @@ public class ConverterActivity extends ActionBarActivity {
             if (startCurrency.compareTo(targetCurrency) == 0) {
                 result = CurrencyConverterUtil.convertOtherCurrency(amount, 1, 1);
             } else if (startCurrency.compareTo(referencedCurrency) == 0 && targetCurrency.compareTo(referencedCurrency) != 0) {
-                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.EURO_TO_OTHER, currencyRateProvider.getRate(targetCurrency));
+                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.EURO_TO_OTHER, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(targetCurrency)));
             } else if (startCurrency.compareTo(referencedCurrency) != 0 && targetCurrency.compareTo(referencedCurrency) != 0) {
-                result = CurrencyConverterUtil.convertOtherCurrency(amount, currencyRateProvider.getRate(startCurrency), currencyRateProvider.getRate(targetCurrency));
+                result = CurrencyConverterUtil.convertOtherCurrency(amount, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(startCurrency)), currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(targetCurrency)));
             } else if (startCurrency.compareTo(referencedCurrency) != 0 && targetCurrency.compareTo(referencedCurrency) == 0) {
-                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.OTHER_TO_EURO, currencyRateProvider.getRate(startCurrency));
+                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.OTHER_TO_EURO, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(startCurrency)));
             }
         }
         return result;
@@ -320,8 +321,8 @@ public class ConverterActivity extends ActionBarActivity {
             CurrencyDatabaseHelper dbHelper = CurrencyDatabaseHelper.getInstance(ConverterActivity.this);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             long count = DatabaseUtils.queryNumEntries(db, CurrencyRatesTbl.TABLE_NAME);
-            InputStream defaultCurrencyXml = getResources().openRawResource(R.raw.euro_currency_rates);
-            final String currencyUrl = getResources().getString(R.string.currency_url_ezb);
+            InputStream defaultCurrencyXml = getResources().openRawResource(R.raw.currency_rates);
+            final String currencyUrl = getResources().getString(R.string.currency_url_floatrates);
             currencyRateProvider = new CurrencyRateProviderImpl(referencedCurrency, db, defaultCurrencyXml, currencyUrl);
             LoadManager.LoaderType type;
             if(count == 0) { // load rates from xml file

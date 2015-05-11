@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://www.floatrates.com/currency-rates.xsl" ?>
+<channel>
+    <title>XML Daily Foreign Exchange Rates for Euro (EUR)</title>
+    <link>http://www.floatrates.com/currency/eur/</link>
+    <xmlLink>http://www.floatrates.com/daily/eur.xml</xmlLink>
+    <description>XML Daily foreign exchange rates for Euro (EUR) from the Float Rates. Published at Mon, 11 May 2015 12:00:01 GMT.</description>
+    <language>en</language>
+    <baseCurrency>EUR</baseCurrency>
+    <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+    <lastBuildDate>Fri, 8 May 2015 12:00:01 GMT</lastBuildDate>
+    <item>
+        <title>1 EUR = 1.11944158 USD</title>
+        <link>http://www.floatrates.com/eur/usd/</link>
+        <description>1 Euro = 1.11944158 U.S. Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>USD</targetCurrency>
+        <targetName>U.S. Dollar</targetName>
+        <exchangeRate>1.11944158</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 0.72588101 GBP</title>
+        <link>http://www.floatrates.com/eur/gbp/</link>
+        <description>1 Euro = 0.72588101 U.K. Pound Sterling</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>GBP</targetCurrency>
+        <targetName>U.K. Pound Sterling</targetName>
+        <exchangeRate>0.72588101</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 134.29093741 JPY</title>
+        <link>http://www.floatrates.com/eur/jpy/</link>
+        <description>1 Euro = 134.29093741 Japanese Yen</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>JPY</targetCurrency>
+        <targetName>Japanese Yen</targetName>
+        <exchangeRate>134.29093741</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.41561253 AUD</title>
+        <link>http://www.floatrates.com/eur/aud/</link>
+        <description>1 Euro = 1.41561253 Australian Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>AUD</targetCurrency>
+        <targetName>Australian Dollar</targetName>
+        <exchangeRate>1.41561253</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.35492437 CAD</title>
+        <link>http://www.floatrates.com/eur/cad/</link>
+        <description>1 Euro = 1.35492437 Canadian Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>CAD</targetCurrency>
+        <targetName>Canadian Dollar</targetName>
+        <exchangeRate>1.35492437</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.03957441 CHF</title>
+        <link>http://www.floatrates.com/eur/chf/</link>
+        <description>1 Euro = 1.03957441 Swiss Franc</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>CHF</targetCurrency>
+        <targetName>Swiss Franc</targetName>
+        <exchangeRate>1.03957441</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 8.81152518 GTQ</title>
+        <link>http://www.floatrates.com/eur/gtq/</link>
+        <description>1 Euro = 8.81152518 Guatemalan Quetzal</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>GTQ</targetCurrency>
+        <targetName>Guatemalan Quetzal</targetName>
+        <exchangeRate>8.81152518</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 10.85361617 MAD</title>
+        <link>http://www.floatrates.com/eur/mad/</link>
+        <description>1 Euro = 10.85361617 Moroccan Dirham</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>MAD</targetCurrency>
+        <targetName>Moroccan Dirham</targetName>
+        <exchangeRate>10.85361617</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.11971227 PAB</title>
+        <link>http://www.floatrates.com/eur/pab/</link>
+        <description>1 Euro = 1.11971227 Panamanian Balboa</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>PAB</targetCurrency>
+        <targetName>Panamanian Balboa</targetName>
+        <exchangeRate>1.11971227</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 109.53769461 DZD</title>
+        <link>http://www.floatrates.com/eur/dzd/</link>
+        <description>1 Euro = 109.53769461 Algerian Dinar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>DZD</targetCurrency>
+        <targetName>Algerian Dinar</targetName>
+        <exchangeRate>109.53769461</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.49199174 BND</title>
+        <link>http://www.floatrates.com/eur/bnd/</link>
+        <description>1 Euro = 1.49199174 Brunei dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>BND</targetCurrency>
+        <targetName>Brunei dollar</targetName>
+        <exchangeRate>1.49199174</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.17339864 AZN</title>
+        <link>http://www.floatrates.com/eur/azn/</link>
+        <description>1 Euro = 1.17339864 Azerbaijan Manat</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>AZN</targetCurrency>
+        <targetName>Azerbaijan Manat</targetName>
+        <exchangeRate>1.17339864</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 6.92925462 CNY</title>
+        <link>http://www.floatrates.com/eur/cny/</link>
+        <description>1 Euro = 6.92925462 Chinese yuan</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>CNY</targetCurrency>
+        <targetName>Chinese yuan</targetName>
+        <exchangeRate>6.92925462</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 66.33610254 KGS</title>
+        <link>http://www.floatrates.com/eur/kgs/</link>
+        <description>1 Euro = 66.33610254 Kyrgyzstan Som</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>KGS</targetCurrency>
+        <targetName>Kyrgyzstan Som</targetName>
+        <exchangeRate>66.33610254</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 7.44847286 DKK</title>
+        <link>http://www.floatrates.com/eur/dkk/</link>
+        <description>1 Euro = 7.44847286 Danish krone</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>DKK</targetCurrency>
+        <targetName>Danish krone</targetName>
+        <exchangeRate>7.44847286</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 7.04464668 TJS</title>
+        <link>http://www.floatrates.com/eur/tjs/</link>
+        <description>1 Euro = 7.04464668 Tajikistan Ruble</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>TJS</targetCurrency>
+        <targetName>Tajikistan Ruble</targetName>
+        <exchangeRate>7.04464668</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 71.55580953 INR</title>
+        <link>http://www.floatrates.com/eur/inr/</link>
+        <description>1 Euro = 71.55580953 Indian rupee</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>INR</targetCurrency>
+        <targetName>Indian rupee</targetName>
+        <exchangeRate>71.55580953</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 207.99309788 KZT</title>
+        <link>http://www.floatrates.com/eur/kzt/</link>
+        <description>1 Euro = 207.99309788 Kazakhstani tenge</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>KZT</targetCurrency>
+        <targetName>Kazakhstani tenge</targetName>
+        <exchangeRate>207.99309788</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 0.79600206 LYD</title>
+        <link>http://www.floatrates.com/eur/lyd/</link>
+        <description>1 Euro = 0.79600206 Libyan dinar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>LYD</targetCurrency>
+        <targetName>Libyan dinar</targetName>
+        <exchangeRate>0.79600206</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 114.97784486 NPR</title>
+        <link>http://www.floatrates.com/eur/npr/</link>
+        <description>1 Euro = 114.97784486 Nepalese rupee</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>NPR</targetCurrency>
+        <targetName>Nepalese rupee</targetName>
+        <exchangeRate>114.97784486</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 0.43042529 OMR</title>
+        <link>http://www.floatrates.com/eur/omr/</link>
+        <description>1 Euro = 0.43042529 Omani rial</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>OMR</targetCurrency>
+        <targetName>Omani rial</targetName>
+        <exchangeRate>0.43042529</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.07476736 QAR</title>
+        <link>http://www.floatrates.com/eur/qar/</link>
+        <description>1 Euro = 4.07476736 Qatari rial</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>QAR</targetCurrency>
+        <targetName>Qatari rial</targetName>
+        <exchangeRate>4.07476736</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.49054912 SGD</title>
+        <link>http://www.floatrates.com/eur/sgd/</link>
+        <description>1 Euro = 1.49054912 Singapore dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>SGD</targetCurrency>
+        <targetName>Singapore dollar</targetName>
+        <exchangeRate>1.49054912</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 9.24152947 SEK</title>
+        <link>http://www.floatrates.com/eur/sek/</link>
+        <description>1 Euro = 9.24152947 Swedish krona</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>SEK</targetCurrency>
+        <targetName>Swedish krona</targetName>
+        <exchangeRate>9.24152947</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 7.09647795 TTD</title>
+        <link>http://www.floatrates.com/eur/ttd/</link>
+        <description>1 Euro = 7.09647795 Trinidad Tobago Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>TTD</targetCurrency>
+        <targetName>Trinidad Tobago Dollar</targetName>
+        <exchangeRate>7.09647795</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 7.04382109 VEF</title>
+        <link>http://www.floatrates.com/eur/vef/</link>
+        <description>1 Euro = 7.04382109 Venezuelan Bolivar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>VEF</targetCurrency>
+        <targetName>Venezuelan Bolivar</targetName>
+        <exchangeRate>7.04382109</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 7.52995510 HRK</title>
+        <link>http://www.floatrates.com/eur/hrk/</link>
+        <description>1 Euro = 7.52995510 Croatian Kuna</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>HRK</targetCurrency>
+        <targetName>Croatian Kuna</targetName>
+        <exchangeRate>7.52995510</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 8.67956412 HKD</title>
+        <link>http://www.floatrates.com/eur/hkd/</link>
+        <description>1 Euro = 8.67956412 Hong Kong Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>HKD</targetCurrency>
+        <targetName>Hong Kong Dollar</targetName>
+        <exchangeRate>8.67956412</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 34.38162196 TWD</title>
+        <link>http://www.floatrates.com/eur/twd/</link>
+        <description>1 Euro = 34.38162196 New Taiwan Dollar </description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>TWD</targetCurrency>
+        <targetName>New Taiwan Dollar </targetName>
+        <exchangeRate>34.38162196</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 9.99593254 ARS</title>
+        <link>http://www.floatrates.com/eur/ars/</link>
+        <description>1 Euro = 9.99593254 Argentine Peso</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>ARS</targetCurrency>
+        <targetName>Argentine Peso</targetName>
+        <exchangeRate>9.99593254</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 118.82822989 XPF</title>
+        <link>http://www.floatrates.com/eur/xpf/</link>
+        <description>1 Euro = 118.82822989 CFP Franc</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>XPF</targetCurrency>
+        <targetName>CFP Franc</targetName>
+        <exchangeRate>118.82822989</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.35054168 GHS</title>
+        <link>http://www.floatrates.com/eur/ghs/</link>
+        <description>1 Euro = 4.35054168 Ghanaian Cedi</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>GHS</targetCurrency>
+        <targetName>Ghanaian Cedi</targetName>
+        <exchangeRate>4.35054168</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 128.65525140 JMD</title>
+        <link>http://www.floatrates.com/eur/jmd/</link>
+        <description>1 Euro = 128.65525140 Jamaican Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>JMD</targetCurrency>
+        <targetName>Jamaican Dollar</targetName>
+        <exchangeRate>128.65525140</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.97062863 ANG</title>
+        <link>http://www.floatrates.com/eur/ang/</link>
+        <description>1 Euro = 1.97062863 Neth. Antillean Guilder</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>ANG</targetCurrency>
+        <targetName>Neth. Antillean Guilder</targetName>
+        <exchangeRate>1.97062863</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 120.48449031 RSD</title>
+        <link>http://www.floatrates.com/eur/rsd/</link>
+        <description>1 Euro = 120.48449031 Serbian Dinar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>RSD</targetCurrency>
+        <targetName>Serbian Dinar</targetName>
+        <exchangeRate>120.48449031</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 10.94273296 BWP</title>
+        <link>http://www.floatrates.com/eur/bwp/</link>
+        <description>1 Euro = 10.94273296 Botswana pula</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>BWP</targetCurrency>
+        <targetName>Botswana pula</targetName>
+        <exchangeRate>10.94273296</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 680.30379450 CLP</title>
+        <link>http://www.floatrates.com/eur/clp/</link>
+        <description>1 Euro = 680.30379450 Chilean peso</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>CLP</targetCurrency>
+        <targetName>Chilean peso</targetName>
+        <exchangeRate>680.30379450</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 16,006.50282390 BYR</title>
+        <link>http://www.floatrates.com/eur/byr/</link>
+        <description>1 Euro = 16,006.50282390 Belarussian Ruble</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>BYR</targetCurrency>
+        <targetName>Belarussian Ruble</targetName>
+        <exchangeRate>16,006.50282390</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 27.30432326 CZK</title>
+        <link>http://www.floatrates.com/eur/czk/</link>
+        <description>1 Euro = 27.30432326 Czech koruna</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>CZK</targetCurrency>
+        <targetName>Czech koruna</targetName>
+        <exchangeRate>27.30432326</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 3.91804571 TMT</title>
+        <link>http://www.floatrates.com/eur/tmt/</link>
+        <description>1 Euro = 3.91804571 New Turkmenistan Manat</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>TMT</targetCurrency>
+        <targetName>New Turkmenistan Manat</targetName>
+        <exchangeRate>3.91804571</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 147.82988578 ISK</title>
+        <link>http://www.floatrates.com/eur/isk/</link>
+        <description>1 Euro = 147.82988578 Icelandic krona</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>ISK</targetCurrency>
+        <targetName>Icelandic krona</targetName>
+        <exchangeRate>147.82988578</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 23.03860678 UAH</title>
+        <link>http://www.floatrates.com/eur/uah/</link>
+        <description>1 Euro = 23.03860678 Ukrainian Hryvnia</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>UAH</targetCurrency>
+        <targetName>Ukrainian Hryvnia</targetName>
+        <exchangeRate>23.03860678</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.32712440 ILS</title>
+        <link>http://www.floatrates.com/eur/ils/</link>
+        <description>1 Euro = 4.32712440 Israeli new sheqel</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>ILS</targetCurrency>
+        <targetName>Israeli new sheqel</targetName>
+        <exchangeRate>4.32712440</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 0.33745566 KWD</title>
+        <link>http://www.floatrates.com/eur/kwd/</link>
+        <description>1 Euro = 0.33745566 Kuwaiti dinar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>KWD</targetCurrency>
+        <targetName>Kuwaiti dinar</targetName>
+        <exchangeRate>0.33745566</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 39.22176276 MUR</title>
+        <link>http://www.floatrates.com/eur/mur/</link>
+        <description>1 Euro = 39.22176276 Mauritian rupee</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>MUR</targetCurrency>
+        <targetName>Mauritian rupee</targetName>
+        <exchangeRate>39.22176276</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 8.36509399 NOK</title>
+        <link>http://www.floatrates.com/eur/nok/</link>
+        <description>1 Euro = 8.36509399 Norwegian krone</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>NOK</targetCurrency>
+        <targetName>Norwegian krone</targetName>
+        <exchangeRate>8.36509399</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.04871780 PLN</title>
+        <link>http://www.floatrates.com/eur/pln/</link>
+        <description>1 Euro = 4.04871780 Polish zloty</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>PLN</targetCurrency>
+        <targetName>Polish zloty</targetName>
+        <exchangeRate>4.04871780</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.19790593 SAR</title>
+        <link>http://www.floatrates.com/eur/sar/</link>
+        <description>1 Euro = 4.19790593 Saudi riyal</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>SAR</targetCurrency>
+        <targetName>Saudi riyal</targetName>
+        <exchangeRate>4.19790593</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 149.34592494 LKR</title>
+        <link>http://www.floatrates.com/eur/lkr/</link>
+        <description>1 Euro = 149.34592494 Sri Lanka rupee</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>LKR</targetCurrency>
+        <targetName>Sri Lanka rupee</targetName>
+        <exchangeRate>149.34592494</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 37.55891164 THB</title>
+        <link>http://www.floatrates.com/eur/thb/</link>
+        <description>1 Euro = 37.55891164 Thai baht</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>THB</targetCurrency>
+        <targetName>Thai baht</targetName>
+        <exchangeRate>37.55891164</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.11165764 AED</title>
+        <link>http://www.floatrates.com/eur/aed/</link>
+        <description>1 Euro = 4.11165764 U.A.E Dirham</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>AED</targetCurrency>
+        <targetName>U.A.E Dirham</targetName>
+        <exchangeRate>4.11165764</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.43365262 RON</title>
+        <link>http://www.floatrates.com/eur/ron/</link>
+        <description>1 Euro = 4.43365262 Romanian New Leu</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>RON</targetCurrency>
+        <targetName>Romanian New Leu</targetName>
+        <exchangeRate>4.43365262</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 3.36710790 BRL</title>
+        <link>http://www.floatrates.com/eur/brl/</link>
+        <description>1 Euro = 3.36710790 Brazilian Real</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>BRL</targetCurrency>
+        <targetName>Brazilian Real</targetName>
+        <exchangeRate>3.36710790</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 49.96406487 PHP</title>
+        <link>http://www.floatrates.com/eur/php/</link>
+        <description>1 Euro = 49.96406487 Philippine Peso</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>PHP</targetCurrency>
+        <targetName>Philippine Peso</targetName>
+        <exchangeRate>49.96406487</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 3.02966181 PGK</title>
+        <link>http://www.floatrates.com/eur/pgk/</link>
+        <description>1 Euro = 3.02966181 Papua New Guinean kina</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>PGK</targetCurrency>
+        <targetName>Papua New Guinean kina</targetName>
+        <exchangeRate>3.02966181</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 653.52663886 XAF</title>
+        <link>http://www.floatrates.com/eur/xaf/</link>
+        <description>1 Euro = 653.52663886 CFA Franc</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>XAF</targetCurrency>
+        <targetName>CFA Franc</targetName>
+        <exchangeRate>653.52663886</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 2.26744104 FJD</title>
+        <link>http://www.floatrates.com/eur/fjd/</link>
+        <description>1 Euro = 2.26744104 Fiji Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>FJD</targetCurrency>
+        <targetName>Fiji Dollar</targetName>
+        <exchangeRate>2.26744104</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 24.43051659 HNL</title>
+        <link>http://www.floatrates.com/eur/hnl/</link>
+        <description>1 Euro = 24.43051659 Honduran Lempira</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>HNL</targetCurrency>
+        <targetName>Honduran Lempira</targetName>
+        <exchangeRate>24.43051659</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1,219.32768527 MMK</title>
+        <link>http://www.floatrates.com/eur/mmk/</link>
+        <description>1 Euro = 1,219.32768527 Myanma Kyat</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>MMK</targetCurrency>
+        <targetName>Myanma Kyat</targetName>
+        <exchangeRate>1,219.32768527</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 3.52642370 PEN</title>
+        <link>http://www.floatrates.com/eur/pen/</link>
+        <description>1 Euro = 3.52642370 Peruvian Nuevo Sol</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>PEN</targetCurrency>
+        <targetName>Peruvian Nuevo Sol</targetName>
+        <exchangeRate>3.52642370</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 537.78188483 AMD</title>
+        <link>http://www.floatrates.com/eur/amd/</link>
+        <description>1 Euro = 537.78188483 Armenia Dram</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>AMD</targetCurrency>
+        <targetName>Armenia Dram</targetName>
+        <exchangeRate>537.78188483</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 2,647.83944952 COP</title>
+        <link>http://www.floatrates.com/eur/cop/</link>
+        <description>1 Euro = 2,647.83944952 Colombian peso</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>COP</targetCurrency>
+        <targetName>Colombian peso</targetName>
+        <exchangeRate>2,647.83944952</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 20.16807816 MDL</title>
+        <link>http://www.floatrates.com/eur/mdl/</link>
+        <description>1 Euro = 20.16807816 Moldova Lei</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>MDL</targetCurrency>
+        <targetName>Moldova Lei</targetName>
+        <exchangeRate>20.16807816</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 302.63946790 HUF</title>
+        <link>http://www.floatrates.com/eur/huf/</link>
+        <description>1 Euro = 302.63946790 Hungarian forint</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>HUF</targetCurrency>
+        <targetName>Hungarian forint</targetName>
+        <exchangeRate>302.63946790</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 2,817.95392750 UZS</title>
+        <link>http://www.floatrates.com/eur/uzs/</link>
+        <description>1 Euro = 2,817.95392750 Uzbekistan Sum</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>UZS</targetCurrency>
+        <targetName>Uzbekistan Sum</targetName>
+        <exchangeRate>2,817.95392750</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 14,711.79913164 IDR</title>
+        <link>http://www.floatrates.com/eur/idr/</link>
+        <description>1 Euro = 14,711.79913164 Indonesian rupiah</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>IDR</targetCurrency>
+        <targetName>Indonesian rupiah</targetName>
+        <exchangeRate>14,711.79913164</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1,220.45094868 KRW</title>
+        <link>http://www.floatrates.com/eur/krw/</link>
+        <description>1 Euro = 1,220.45094868 South Korean Won</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>KRW</targetCurrency>
+        <targetName>South Korean Won</targetName>
+        <exchangeRate>1,220.45094868</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 4.02876436 MYR</title>
+        <link>http://www.floatrates.com/eur/myr/</link>
+        <description>1 Euro = 4.02876436 Malaysian ringgit</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>MYR</targetCurrency>
+        <targetName>Malaysian ringgit</targetName>
+        <exchangeRate>4.02876436</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.50648098 NZD</title>
+        <link>http://www.floatrates.com/eur/nzd/</link>
+        <description>1 Euro = 1.50648098 New Zealand dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>NZD</targetCurrency>
+        <targetName>New Zealand dollar</targetName>
+        <exchangeRate>1.50648098</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 114.01424810 PKR</title>
+        <link>http://www.floatrates.com/eur/pkr/</link>
+        <description>1 Euro = 114.01424810 Pakistani rupee</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>PKR</targetCurrency>
+        <targetName>Pakistani rupee</targetName>
+        <exchangeRate>114.01424810</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 56.86401703 RUB</title>
+        <link>http://www.floatrates.com/eur/rub/</link>
+        <description>1 Euro = 56.86401703 Russian rouble</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>RUB</targetCurrency>
+        <targetName>Russian rouble</targetName>
+        <exchangeRate>56.86401703</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 13.42518347 ZAR</title>
+        <link>http://www.floatrates.com/eur/zar/</link>
+        <description>1 Euro = 13.42518347 South African rand</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>ZAR</targetCurrency>
+        <targetName>South African rand</targetName>
+        <exchangeRate>13.42518347</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 2.15036456 TND</title>
+        <link>http://www.floatrates.com/eur/tnd/</link>
+        <description>1 Euro = 2.15036456 Tunisian dinar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>TND</targetCurrency>
+        <targetName>Tunisian dinar</targetName>
+        <exchangeRate>2.15036456</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.95182961 BGN</title>
+        <link>http://www.floatrates.com/eur/bgn/</link>
+        <description>1 Euro = 1.95182961 Bulgarian Lev</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>BGN</targetCurrency>
+        <targetName>Bulgarian Lev</targetName>
+        <exchangeRate>1.95182961</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 3.02236601 TRY</title>
+        <link>http://www.floatrates.com/eur/try/</link>
+        <description>1 Euro = 3.02236601 Turkish Lira</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>TRY</targetCurrency>
+        <targetName>Turkish Lira</targetName>
+        <exchangeRate>3.02236601</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 17.03690604 MXN</title>
+        <link>http://www.floatrates.com/eur/mxn/</link>
+        <description>1 Euro = 17.03690604 Mexican Peso</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>MXN</targetCurrency>
+        <targetName>Mexican Peso</targetName>
+        <exchangeRate>17.03690604</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 24,222.22167085 VND</title>
+        <link>http://www.floatrates.com/eur/vnd/</link>
+        <description>1 Euro = 24,222.22167085 Vietnamese dong</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>VND</targetCurrency>
+        <targetName>Vietnamese dong</targetName>
+        <exchangeRate>24,222.22167085</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 1.11971227 BSD</title>
+        <link>http://www.floatrates.com/eur/bsd/</link>
+        <description>1 Euro = 1.11971227 Bahamian Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>BSD</targetCurrency>
+        <targetName>Bahamian Dollar</targetName>
+        <exchangeRate>1.11971227</exchangeRate>
+    </item>
+    <item>
+        <title>1 EUR = 3.01170524 XCD</title>
+        <link>http://www.floatrates.com/eur/xcd/</link>
+        <description>1 Euro = 3.01170524 East Caribbean Dollar</description>
+        <pubDate>Mon, 11 May 2015 12:00:01 GMT</pubDate>
+        <baseCurrency>EUR</baseCurrency>
+        <baseName>Euro</baseName>
+        <targetCurrency>XCD</targetCurrency>
+        <targetName>East Caribbean Dollar</targetName>
+        <exchangeRate>3.01170524</exchangeRate>
+    </item>
+</channel>

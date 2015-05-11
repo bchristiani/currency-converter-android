@@ -44,6 +44,7 @@ public class DatabaseStoreManager {
                 for (CurrencyRateEntry entry: currencyRates.getCurrencyRateEntries()) {
                     args.put(CurrencyRateColums.CURRENCY, entry.getCurrency());
                     args.put(CurrencyRateColums.RATE, entry.getRate());
+                    args.put(CurrencyRateColums.NAME, entry.getName());
                     args.put(CurrencyRateColums.TIMESTAMP, timestamp);
                     database.insertWithOnConflict(CurrencyRatesTbl.TABLE_NAME, null, args, SQLiteDatabase.CONFLICT_REPLACE);
                 }

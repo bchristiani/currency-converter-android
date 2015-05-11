@@ -6,8 +6,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
-import de.medieninf.mobcomp.currencyconverter.helper.XMLConsumer;
-import de.medieninf.mobcomp.currencyconverter.helper.interfaces.Consumer;
 import de.medieninf.mobcomp.currencyconverter.persistence.interfaces.LoadManager;
 import de.medieninf.mobcomp.currencyconverter.util.StreamUtil;
 
@@ -17,12 +15,10 @@ import de.medieninf.mobcomp.currencyconverter.util.StreamUtil;
 public class FileLoadManager extends LoadManager{
 
     private static final String TAG = FileLoadManager.class.getSimpleName();
-    private Consumer consumer;
     private byte[] fileByteArray;
 
     public FileLoadManager(LoaderType type, InputStream in) {
         super(type);
-        this.consumer = new XMLConsumer();
         try {
             this.fileByteArray  = StreamUtil.toByteArray(in);
         } catch (Exception e) {

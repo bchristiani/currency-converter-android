@@ -10,7 +10,7 @@ public interface CurrencyRateColums {
      */
     String CURRENCY = "currency";
 
-    String LAND = "land";
+    String NAME = "name";
 
     String RATE = "rate";
 

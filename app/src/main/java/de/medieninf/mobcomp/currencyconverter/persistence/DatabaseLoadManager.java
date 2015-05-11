@@ -43,9 +43,9 @@ public class DatabaseLoadManager extends LoadManager{
         c.moveToFirst();
         String timestamp = "";
         while(c.moveToNext()) {
-            CurrencyRateEntry entry = new CurrencyRateEntry(c.getString(0),c.getFloat(1));
+            CurrencyRateEntry entry = new CurrencyRateEntry(c.getString(0),c.getString(2), c.getFloat(1));
             cr.addCurrencyRateEntry(entry);
-            timestamp = c.getString(2);
+            timestamp = c.getString(3);
         }
         c.close();
         try {

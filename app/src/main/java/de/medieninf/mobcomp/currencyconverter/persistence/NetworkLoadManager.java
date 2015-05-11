@@ -7,8 +7,6 @@ import java.net.URL;
 
 import de.medieninf.mobcomp.currencyconverter.entities.CurrencyRates;
 import de.medieninf.mobcomp.currencyconverter.exceptions.NetworkConnectionException;
-import de.medieninf.mobcomp.currencyconverter.helper.XMLConsumer;
-import de.medieninf.mobcomp.currencyconverter.helper.interfaces.Consumer;
 import de.medieninf.mobcomp.currencyconverter.persistence.interfaces.LoadManager;
 
 /**
@@ -20,12 +18,10 @@ public class NetworkLoadManager extends LoadManager{
     private static final int CONNECT_TIMEOUT = 15000;
     private static final String REQUEST_METHOD = "GET";
     private String url;
-    private Consumer consumer;
 
     public NetworkLoadManager(LoaderType type, String url) {
         super(type);
         this.url = url;
-        this.consumer = new XMLConsumer();
     }
 
     @Override

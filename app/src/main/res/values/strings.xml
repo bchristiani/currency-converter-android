@@ -4,11 +4,12 @@
     <string name="et_start_amount">Startbetrag...</string>
     <string name="et_target_amount">Zielbetrag...</string>
     <string name="btn_calculate">Berechnen</string>
-    <string name="reference_currency">EUR</string>
+    <string name="reference_currency">EUR (Euro)</string>
     <string name="tv_date">Kursstand:</string>
     <string name="action_update">Kurse aktualisieren</string>
     <string name="action_revert">Kurse zurücksetzen</string>
     <string name="currency_url_ezb">https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml</string>
+    <string name="currency_url_floatrates">http://www.floatrates.com/daily/eur.xml</string>
     <string name="progress_headline">Lade Kursdaten...</string>
     <string name="progress_text"></string>
     <string name="msg_rates_up_to_date">Kurse bereits aktuell!</string>

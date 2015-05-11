@@ -17,6 +17,8 @@ public final class CurrencyRatesTbl implements CurrencyRateColums {
             " TEXT PRIMARY KEY NOT NULL, " +
             RATE +
             " REAL NOT NULL, " +
+            NAME +
+            " TEXT NOT NULL, " +
             TIMESTAMP +
             " TEXT NOT NULL)";
 
@@ -25,7 +27,7 @@ public final class CurrencyRatesTbl implements CurrencyRateColums {
 
     public static final String TIMESTAMP_FORMAT = "yyyy-MM-dd";
 
-    public static final String[] TABLE_ATTRIBUTES = {"currency", "rate", "timestamp"};
+    public static final String[] TABLE_ATTRIBUTES = {"currency", "rate", "name", "timestamp"};
 
     private CurrencyRatesTbl() {
 

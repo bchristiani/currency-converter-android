@@ -2,7 +2,4 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <item name="usd_rate" format="float" type="dimen">1.11</item>
-    <item name="grd_rate" format="float" type="dimen">340.75</item>
-    <item name="eur_rate" format="float" type="dimen">1</item>
 </resources>

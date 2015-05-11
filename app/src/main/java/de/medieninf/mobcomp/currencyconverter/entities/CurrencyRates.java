@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.medieninf.mobcomp.currencyconverter.persistence.db.schema.CurrencyRateColums;
+
 /**
  * Created by bchristiani on 04.05.2015.
  */
@@ -37,7 +39,7 @@ public class CurrencyRates {
     public List<CharSequence> getCurrencies() {
         List<CharSequence> list = new ArrayList<>();
         for(CurrencyRateEntry entry: currencyRates.values()) {
-            list.add(entry.getCurrency());
+            list.add(entry.toString());
         }
         return list;
     }
