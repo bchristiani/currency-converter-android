@@ -19,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.SetPreferenceActivity"
+            android:label="@string/title_activity_converter"
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
     </application>
 
 </manifest>

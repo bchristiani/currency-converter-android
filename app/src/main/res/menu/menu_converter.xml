@@ -1,9 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/action_prefs"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="Einstellungen"/>
+
+    <item
         android:id="@+id/action_update"
         android:title="@string/action_update"
         android:icon="@android:drawable/ic_menu_rotate"/>
-    <item android:id="@+id/action_revert"
+    <item
+        android:id="@+id/action_revert"
         android:icon="@android:drawable/ic_menu_revert"
         android:title="@string/action_revert"/>
 </menu>

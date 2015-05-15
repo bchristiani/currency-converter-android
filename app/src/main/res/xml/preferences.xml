@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Allgemein">
+        <ListPreference
+            android:key="@string/decimal_places_preference"
+            android:title="Nachkommastellen"
+            android:entryValues="@array/decimal_places_list"
+            android:entries="@array/decimal_places_list"
+            android:defaultValue="@string/default_decimal_places"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Startwerte">
+        <CheckBoxPreference
+            android:key="@string/checkbox_preference"
+            android:title="Aktivieren"
+            android:defaultValue="false"/>
+        <EditTextPreference
+            android:key="@string/default_amount_preference"
+            android:title="Betrag"
+            android:digits="0123456789."
+            android:dependency="checkbox_preference"/>
+        <ListPreference
+            android:key="@string/default_start_currency_preference"
+            android:title="Quellwährung"
+            android:dependency="checkbox_preference"/>
+        <ListPreference
+            android:key="@string/default_target_currency_preference"
+            android:title="Zielwährung"
+            android:dependency="checkbox_preference"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

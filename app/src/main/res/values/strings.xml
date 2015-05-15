@@ -12,7 +12,26 @@
     <string name="currency_url_floatrates">http://www.floatrates.com/daily/eur.xml</string>
     <string name="progress_headline">Lade Kursdaten...</string>
     <string name="progress_text"></string>
-    <string name="msg_rates_up_to_date">Kurse bereits aktuell!</string>
-    <string name="error_msg_network">Netzwerkfehler!</string>
+    <string name="msg_rates_up_to_date">Kurse bereits aktuell</string>
+    <string name="error_msg_network">Netzwerkfehler</string>
     <string name="rate_date_format">dd.MM.yyyy</string>
+
+    <string name="checkbox_preference">checkbox_preference</string>
+    <string name="decimal_places_preference">decimal_places_preference</string>
+    <string name="default_amount_preference">default_amount_preference</string>
+    <string name="default_start_currency_preference">default_start_currency_preference</string>
+    <string name="default_target_currency_preference">default_target_currency_preference</string>
+    <string name="last_amount_preference">last_amount_preference</string>
+    <string name="last_start_currency_preference">last_start_currency_preference</string>
+    <string name="last_target_currency_preference">last_target_currency_preference</string>
+    <string name="default_decimal_places">2</string>
+    <string-array name="decimal_places_list">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>

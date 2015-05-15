@@ -1,6 +1,7 @@
 package de.medieninf.mobcomp.currencyconverter.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.DatabaseUtils;
@@ -25,6 +26,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.InputStream;
+import java.util.List;
+
 import de.medieninf.mobcomp.currencyconverter.R;
 import de.medieninf.mobcomp.currencyconverter.exceptions.NetworkConnectionException;
 import de.medieninf.mobcomp.currencyconverter.logic.CurrencyRateProviderImpl;
@@ -39,9 +42,14 @@ import de.medieninf.mobcomp.currencyconverter.util.CurrencyEntryUtil;
 public class ConverterActivity extends ActionBarActivity {
     //declare static variables
     private final static String TAG = ConverterActivity.class.getSimpleName();
-    private final static String AMOUNT_INPUT_KEY = "amountInput";
-    private final static String START_CURRENCY_KEY = "startCurrency";
-    private final static String TARGET_CURRENCY_KEY = "targetCurrency";
+    private static String CHECKBOX_PREFERENCES;
+    private static String DEFAULT_AMOUNT_PREFERENCES;
+    private static String LAST_AMOUNT_PREFERENCES;
+    private static String DEFAULT_START_CURRENCY_PREFERENCES;
+    private static String DEFAULT_TARGET_CURRENCY_PREFERENCES;
+    private static String LAST_START_CURRENCY_PREFERENCES;
+    private static String LAST_TARGET_CURRENCY_PREFERENCES;
+    private static String DECIMAL_PLACES_PREFERENCES;
     // declare widgets
     private Button btnReset;
     private Toast toastError;
@@ -119,6 +127,7 @@ public class ConverterActivity extends ActionBarActivity {
     private String selectedStartCurrency;
     private String selectedTargetCurrency;
     private boolean setTextFlag;
+    private int scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +158,12 @@ public class ConverterActivity extends ActionBarActivity {
                 pDialog = ProgressDialog.show(this, res.getString(R.string.progress_headline), res.getString(R.string.progress_text), true);
                 new UpdateTask().execute(LoadManager.LoaderType.INIT);
                 return true;
+            case R.id.action_prefs:
+                Intent intent = new Intent(this, SetPreferenceActivity.class);
+                List<CharSequence> list = currencyRateProvider.getCurrencies();
+                intent.putExtra("currencies", list.toArray(new String[list.size()]));
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -166,9 +181,9 @@ public class ConverterActivity extends ActionBarActivity {
         super.onPause();
         if(prefs != null) {
             final SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(AMOUNT_INPUT_KEY,etStartAmount.getText().toString());
-            editor.putString(START_CURRENCY_KEY,selectedStartCurrency);
-            editor.putString(TARGET_CURRENCY_KEY,selectedTargetCurrency);
+            editor.putString(LAST_AMOUNT_PREFERENCES,etStartAmount.getText().toString());
+            editor.putString(LAST_START_CURRENCY_PREFERENCES,selectedStartCurrency);
+            editor.putString(LAST_TARGET_CURRENCY_PREFERENCES,selectedTargetCurrency);
             editor.commit();
         }
     }
@@ -188,8 +203,16 @@ public class ConverterActivity extends ActionBarActivity {
     private void preInit() {
         Log.v(TAG, "preInit");
         res = getResources();
+        CHECKBOX_PREFERENCES = res.getString(R.string.checkbox_preference);
+        LAST_AMOUNT_PREFERENCES = res.getString(R.string.last_amount_preference);
+        LAST_START_CURRENCY_PREFERENCES = res.getString(R.string.last_start_currency_preference);
+        LAST_TARGET_CURRENCY_PREFERENCES = res.getString(R.string.last_target_currency_preference);
+        DEFAULT_AMOUNT_PREFERENCES = res.getString(R.string.default_amount_preference);
+        DEFAULT_START_CURRENCY_PREFERENCES = res.getString(R.string.default_start_currency_preference);
+        DEFAULT_TARGET_CURRENCY_PREFERENCES = res.getString(R.string.default_target_currency_preference);
+        DECIMAL_PLACES_PREFERENCES = res.getString(R.string.decimal_places_preference);
         referencedCurrency = res.getString(R.string.reference_currency);
-        tvDate = getResources().getString(R.string.tv_date);
+        tvDate = res.getString(R.string.tv_date);
         // instantiate widgets
         pDialog = ProgressDialog.show(this, res.getString(R.string.progress_headline), res.getString(R.string.progress_text), true);
         btnReset = (Button) findViewById(R.id.btn_reset);
@@ -214,11 +237,22 @@ public class ConverterActivity extends ActionBarActivity {
     private void postInit() {
         Log.v(TAG,"postInit");
 
-        // load saved user inputs
-        prefs = getPreferences(MODE_PRIVATE);
-        final String startCurrency = prefs.getString(START_CURRENCY_KEY,null);
-        final String targetCurrency = prefs.getString(TARGET_CURRENCY_KEY,null);
-        final String inputAmount = prefs.getString(AMOUNT_INPUT_KEY,null);
+        // load preferences
+        prefs = getSharedPreferences("mySharedPrefs",MODE_PRIVATE);
+        final boolean prefsActivated = prefs.getBoolean(CHECKBOX_PREFERENCES, false);
+        String startCurrency;
+        String targetCurrency;
+        String inputAmount;
+        if(prefsActivated) {
+            startCurrency = prefs.getString(DEFAULT_START_CURRENCY_PREFERENCES,null);
+            targetCurrency = prefs.getString(DEFAULT_TARGET_CURRENCY_PREFERENCES,null);
+            inputAmount = prefs.getString(DEFAULT_AMOUNT_PREFERENCES,null);
+        } else {
+            startCurrency = prefs.getString(LAST_START_CURRENCY_PREFERENCES,null);
+            targetCurrency = prefs.getString(LAST_TARGET_CURRENCY_PREFERENCES,null);
+            inputAmount = prefs.getString(LAST_AMOUNT_PREFERENCES,null);
+        }
+        scale = Integer.parseInt(prefs.getString(DECIMAL_PLACES_PREFERENCES, res.getString(R.string.default_decimal_places)));
 
         // set adapter
         ArrayAdapter<CharSequence> adapterStartCurrency = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencyRateProvider.getCurrencies());
@@ -284,13 +318,13 @@ public class ConverterActivity extends ActionBarActivity {
         String result = "";
         if (amount.length() > 0 && CurrencyConverterUtil.isNumeric(amount)) {
             if (startCurrency.compareTo(targetCurrency) == 0) {
-                result = CurrencyConverterUtil.convertOtherCurrency(amount, 1, 1);
+                result = CurrencyConverterUtil.convertOtherCurrency(amount, 1, 1, scale);
             } else if (startCurrency.compareTo(referencedCurrency) == 0 && targetCurrency.compareTo(referencedCurrency) != 0) {
-                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.EURO_TO_OTHER, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(targetCurrency)));
+                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.EURO_TO_OTHER, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(targetCurrency)),scale);
             } else if (startCurrency.compareTo(referencedCurrency) != 0 && targetCurrency.compareTo(referencedCurrency) != 0) {
-                result = CurrencyConverterUtil.convertOtherCurrency(amount, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(startCurrency)), currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(targetCurrency)));
+                result = CurrencyConverterUtil.convertOtherCurrency(amount, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(startCurrency)), currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(targetCurrency)),scale);
             } else if (startCurrency.compareTo(referencedCurrency) != 0 && targetCurrency.compareTo(referencedCurrency) == 0) {
-                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.OTHER_TO_EURO, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(startCurrency)));
+                result = CurrencyConverterUtil.convertEuroCurrency(amount, CurrencyConverterUtil.Type.OTHER_TO_EURO, currencyRateProvider.getRate(CurrencyEntryUtil.parseCurrencyFromString(startCurrency)),scale);
             }
         }
         return result;
